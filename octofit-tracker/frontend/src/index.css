@@ -5,3 +5,8 @@ body {
 #root {
   min-height: 100svh;
 }
+
+:focus-visible {
+  outline: 3px solid #df805f;
+  outline-offset: 3px;
+}
