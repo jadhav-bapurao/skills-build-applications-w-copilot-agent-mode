@@ -1,4 +1,7 @@
 import CollectionPage from './CollectionPage.jsx'
+import { apiUrl } from '../api.js'
+
+const endpoint = apiUrl('teams', '-8000.app.github.dev/api/teams/')
 
 function teamMembers(team) {
   if (!Array.isArray(team.members)) return []
@@ -19,6 +22,6 @@ const columns = [
 
 export default function Teams() {
   return (
-    <CollectionPage columns={columns} description="Find the squads building momentum together." resource="teams" title="Teams" />
+    <CollectionPage columns={columns} description="Find the squads building momentum together." endpoint={endpoint} resource="teams" title="Teams" />
   )
 }

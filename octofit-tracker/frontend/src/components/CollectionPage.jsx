@@ -1,7 +1,7 @@
 import useCollection from './useCollection.js'
 
-export default function CollectionPage({ resource, title, description, columns }) {
-  const { records, loading, error, refresh } = useCollection(resource)
+export default function CollectionPage({ resource, endpoint, title, description, columns }) {
+  const { records, loading, error, refresh } = useCollection(endpoint)
 
   return (
     <section aria-labelledby={`${resource}-title`}>

@@ -1,4 +1,7 @@
 import CollectionPage from './CollectionPage.jsx'
+import { apiUrl } from '../api.js'
+
+const endpoint = apiUrl('activities', '-8000.app.github.dev/api/activities/')
 
 function formatDate(value) {
   const date = new Date(value)
@@ -23,6 +26,6 @@ const columns = [
 
 export default function Activities() {
   return (
-    <CollectionPage columns={columns} description="Recent movement logged by the OctoFit community." resource="activities" title="Activities" />
+    <CollectionPage columns={columns} description="Recent movement logged by the OctoFit community." endpoint={endpoint} resource="activities" title="Activities" />
   )
 }

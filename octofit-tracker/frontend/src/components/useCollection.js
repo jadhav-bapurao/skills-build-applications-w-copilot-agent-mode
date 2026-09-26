@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { apiUrl, normalizeCollection } from '../api.js'
+import { normalizeCollection } from '../api.js'
 
-export default function useCollection(resource) {
+export default function useCollection(endpoint) {
   const [records, setRecords] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -15,7 +15,7 @@ export default function useCollection(resource) {
       setError('')
 
       try {
-        const response = await fetch(apiUrl(resource), { signal: controller.signal })
+        const response = await fetch(endpoint, { signal: controller.signal })
         if (!response.ok) throw new Error(`Request failed with status ${response.status}`)
         setRecords(normalizeCollection(await response.json()))
       } catch (requestError) {
@@ -27,7 +27,7 @@ export default function useCollection(resource) {
 
     loadCollection()
     return () => controller.abort()
-  }, [resource, attempt])
+  }, [endpoint, attempt])
 
   return {
     records,

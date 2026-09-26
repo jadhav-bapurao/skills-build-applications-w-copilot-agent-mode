@@ -1,4 +1,7 @@
 import CollectionPage from './CollectionPage.jsx'
+import { apiUrl } from '../api.js'
+
+const endpoint = apiUrl('workouts', '-8000.app.github.dev/api/workouts/')
 
 const columns = [
   { key: 'name', label: 'Workout', render: (workout) => workout.name || 'Untitled workout' },
@@ -15,6 +18,6 @@ const columns = [
 
 export default function Workouts() {
   return (
-    <CollectionPage columns={columns} description="Suggested sessions for your next training block." resource="workouts" title="Workouts" />
+    <CollectionPage columns={columns} description="Suggested sessions for your next training block." endpoint={endpoint} resource="workouts" title="Workouts" />
   )
 }

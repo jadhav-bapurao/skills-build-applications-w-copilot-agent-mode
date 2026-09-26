@@ -4,9 +4,14 @@ export const API_BASE_URL = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev`
   : 'http://localhost:8000'
 
-export function apiUrl(resource) {
+export function apiUrl(resource, codespacePath) {
   const path = String(resource).replace(/^\/+|\/+$/g, '')
-  return `${API_BASE_URL}/api/${path}/`
+  const localPath = `/api/${path}/`
+  const remotePath = codespacePath || `-8000.app.github.dev${localPath}`
+
+  return codespaceName
+    ? `https://${codespaceName}${remotePath}`
+    : `http://localhost:8000${localPath}`
 }
 
 export function normalizeCollection(payload) {

@@ -1,4 +1,7 @@
 import CollectionPage from './CollectionPage.jsx'
+import { apiUrl } from '../api.js'
+
+const endpoint = apiUrl('leaderboard', '-8000.app.github.dev/api/leaderboard/')
 
 const columns = [
   { key: 'rank', label: 'Rank', render: (_entry, index) => <span className="rank-value">{index + 1}</span> },
@@ -12,6 +15,6 @@ const columns = [
 
 export default function Leaderboard() {
   return (
-    <CollectionPage columns={columns} description="A snapshot of points earned across the fitness program." resource="leaderboard" title="Leaderboard" />
+    <CollectionPage columns={columns} description="A snapshot of points earned across the fitness program." endpoint={endpoint} resource="leaderboard" title="Leaderboard" />
   )
 }
